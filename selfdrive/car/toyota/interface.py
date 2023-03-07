@@ -162,14 +162,25 @@ class CarInterface(CarInterfaceBase):
 
     elif candidate in [CAR.COROLLA_TSS2, CAR.COROLLAH_TSS2]:
       stop_and_go = True
-      ret.wheelbase = 2.7  # Average between 2.70 for sedan and 2.64 for hatchback
+      ret.wheelbase = 2.64  # Average between 2.70 for sedan and 2.64 for hatchback
       ret.steerRatio = 13.9
       tire_stiffness_factor = 0.444  # not optimized yet
       ret.mass = 3060. * CV.LB_TO_KG + STD_CARGO_KG
-      ret.wheelSpeedFactor = 1.09
-      set_lat_tune(ret.lateralTuning, LatTunes.INDI_COROLLAS_TSS2)
-      ret.steerActuatorDelay = 0.2666 #Only For INDI
-      #set_lat_tune(ret.lateralTuning, LatTunes.PID_D)
+      #ret.wheelSpeedFactor = 1.09
+      #set_lat_tune(ret.lateralTuning, LatTunes.INDI_COROLLAS_TSS2)
+      #ret.steerActuatorDelay = 0.2666 #Only For INDI
+      #ret.steerRatio = 15
+      #ret.lateralTuning.init('indi') # AtL's INDI Corolla TSS2 Tune v2.0
+      #ret.lateralTuning.indi.innerLoopGainBP = [0.]
+      #ret.lateralTuning.indi.innerLoopGainV = [15]
+      #ret.lateralTuning.indi.outerLoopGainBP = [0.]
+      #ret.lateralTuning.indi.outerLoopGainV = [17]
+      #ret.lateralTuning.indi.timeConstantBP = [0.]
+      #ret.lateralTuning.indi.timeConstantV = [4.5]
+      #ret.lateralTuning.indi.actuatorEffectivenessBP = [0.]
+      #ret.lateralTuning.indi.actuatorEffectivenessV = [15]
+      #ret.steerActuatorDelay = 0.41
+      set_lat_tune(ret.lateralTuning, LatTunes.PID_D)
 
     elif candidate in [CAR.LEXUS_ES_TSS2, CAR.LEXUS_ESH_TSS2]:
       stop_and_go = True
